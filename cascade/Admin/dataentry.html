@@ -1,0 +1,133 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Enter HW details here</h1>
+
+    <form method="POST" class="admin-form">
+      <div class="form-members">
+        <div class="form-group">
+          <label for="hw-num">Enter HW Number</label>
+          <input type="number" class="form-control" id="hw" />
+        </div>
+        <div class="form-group">
+          <label for="points">How many points is this HW worth?</label>
+          <input
+            type="number"
+            class="form-control"
+            id="points"
+            class="points"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Enter the HW description.</label>
+          <input type="text" class="form-control" id="description" />
+        </div>
+        <div class="form-group">
+          <label for="url">Enter the HW url.</label>
+          <input type="url" class="form-control" id="url" />
+        </div>
+      </div>
+      <div class="anotherurl">
+        <input type="button" id="add-field" value="Add another url" />
+      </div>
+      <button
+        type="button"
+        class="btn btn-primary btn-lg"
+        onclick="alertOnOpen()"
+      >
+        Submit
+      </button>
+    </form>
+
+    <table id="formtable">
+      <tr>
+        <th>HW #</th>
+        <th>Points</th>
+        <th>Description</th>
+        <th>URL</th>
+      </tr>
+    </table>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function alertOnOpen() {
+        const hw = document.createTextNode(document.getElementById("hw").value);
+        const pts = document.createTextNode(
+          document.getElementById("points").value
+        );
+        const descr = document.createTextNode(
+          document.querySelector("#description").value
+        );
+        const link = document.createTextNode(
+          document.getElementsByTagName("input")[3].value
+        );
+
+        const new_row = document.createElement("tr");
+        const c1 = document.createElement("td");
+        c1.appendChild(hw);
+        const c2 = document.createElement("td");
+        c2.appendChild(pts);
+        const c3 = document.createElement("td");
+        c3.appendChild(descr);
+        const c4 = document.createElement("td");
+        c4.appendChild(link);
+        new_row.appendChild(c1);
+        new_row.appendChild(c2);
+        new_row.appendChild(c3);
+        new_row.appendChild(c4);
+        const table = document.getElementById("formtable");
+        table.appendChild(new_row);
+      }
+
+      function adddata() {
+        document
+          .getElementById("add-field")
+          .addEventListener("click", () => {
+            const formlabel = document.querySelector(".form-members");
+            const div = document.createElement('div');
+            div.className="form-group";
+
+            const label = document.createElement('label');
+            const labeltxt = document.createTextNode("Enter another URL");
+            label.appendChild(labeltxt);
+
+            const inp = document.createElement("input");
+            inp.type = "url"
+            inp.id = "url2"
+            inp.className = "form-control";
+
+            div.appendChild(label);
+            div.appendChild(inp);
+            formlabel.appendChild(div);
+          });
+      }
+
+      adddata();
+    </script>
+  </body>
+</html>

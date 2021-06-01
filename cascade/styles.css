@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+
+nav {
+    height: 7vh;
+    position: fixed;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    background: rgb(77, 74, 99);
+    color: white;
+}
+
+nav h1 {
+    margin-left: 3vw;
+}
+
+.links {
+    margin-right: 3vw;
+    display: flex;
+    height: 7vh;
+    width: 30vw;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.links p {
+    margin-bottom: 0;
+}
